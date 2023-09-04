@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+//  include https://picsum.photos
+const nextConfig = {
+  images: {
+    domains: ["picsum.photos"],
+  },
+};
+
+module.exports = nextConfig;

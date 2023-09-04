@@ -1,0 +1,69 @@
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  text-align: left;
+
+  color: #4c4c4c;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  color: #4c4c4c;
+}
+small {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  text-align: left;
+  color: #909090;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  text-align: left;
+  color: #909090;
+}
+
+.theme_btn {
+  border-radius: 5px;
+  background-color: #ff5a5f;
+  padding: 5px 25px;
+  margin: 10px;
+  // font
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  text-align: center;
+  color: #fff;
+  // hover
+  &:hover {
+    background-color: #ff7b7f;
+  }
+  @media (max-width: 1023px) {
+    margin: 0px;
+  }
+}
+
+.dark {
+  h2 {
+    color: #ffff;
+  }
+
+  h3 {
+    color: #ffff;
+  }
+  p {
+    color: #b6b6b6;
+  }
+
+  small {
+    color: #b6b6b6;
+  }
+}

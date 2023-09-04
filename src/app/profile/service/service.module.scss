@@ -1,0 +1,13 @@
+#service_page {
+  width: 992px;
+  max-width: 90vw;
+  margin: auto;
+  //   background: red;
+
+  // on tablet
+  @media (max-width: 1023px) {
+    width: 650px;
+    max-width: 90vw;
+    // padding: 50px 20px;
+  }
+}
