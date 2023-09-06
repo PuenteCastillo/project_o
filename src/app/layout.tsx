@@ -1,5 +1,4 @@
 import "./globals.css";
-
 import "./glabals.scss";
 
 import type { Metadata } from "next";

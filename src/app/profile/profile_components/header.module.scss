@@ -104,3 +104,22 @@
     margin-top: 50px;
   }
 }
+.profile_header_small {
+  width: 992px;
+  max-width: 90vw;
+  margin: auto;
+  padding: 25px 0px;
+  .divider {
+    border-bottom: solid 1px #e0e0e0;
+    max-width: 95vw;
+    margin: auto;
+    margin-top: 30px;
+  }
+
+  // on tablet
+  @media (max-width: 1023px) {
+    width: 650px;
+    max-width: 90vw;
+    // padding: 50px 20px;
+  }
+}

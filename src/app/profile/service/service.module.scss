@@ -10,4 +10,35 @@
     max-width: 90vw;
     // padding: 50px 20px;
   }
+  .Cal_wrapper {
+    // anything bigger than 1023px
+    div:first-child {
+      // width: fit-content;
+      margin: auto;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    @media (min-width: 765px) {
+      table {
+        // margin: auto;
+        th {
+          padding: 35.5px;
+          // background: red;
+        }
+        td {
+          padding: 18px;
+          // background: blue;
+        }
+      }
+      // target first div
+      div:first-child {
+        // background: red;
+        // margin-bottom: 20px;
+        justify-content: center;
+        // background-color: red;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
 }

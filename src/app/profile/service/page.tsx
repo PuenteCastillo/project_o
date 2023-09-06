@@ -1,20 +1,25 @@
+"use client";
 import Image from "next/image";
-import Header from "../profile_components/header";
+import Header from "../profile_components/header_small";
 import Services from "../profile_components/Services";
 import Styles from "./service.module.scss";
-// import { Button } from "@/components/ui/button";
+import { Calendar } from "@/app/modules/ui/calendar";
+import { useState } from "react";
+import React from "react";
 
 export default function service() {
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
   return (
     <main id="service_page">
       <Header />
       {/* <Services /> */}
       <section
         id={Styles.service_page}
-        className="  py-3 w-full overflow-hidden m-auto mt-10"
+        className="  py-3 w-full overflow-hidden m-auto mt-10 pb-40"
       >
         <div className="grid grid-cols-12 gap-5">
-          <div className=" col-span-4">
+          <div className=" col-span-12 lg:col-span-5">
             <div className="  ">
               <div className="title_row grid grid-cols-2 max-w-6xl m-auto">
                 <div>
@@ -100,14 +105,18 @@ export default function service() {
               </div>
             </div>
           </div>
-          <div className="8">
-            <h2> Calander</h2>
+          <div className=" col-span-12 lg:col-span-7">
+            <h2 className="mb-5"> Calander</h2>
+            <div className={Styles.Cal_wrapper}>
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                className="rounded-md border"
+              />
+            </div>
           </div>
         </div>
-
-        {/* <div>
-          <Button>Click me</Button>
-        </div> */}
       </section>
     </main>
   );
