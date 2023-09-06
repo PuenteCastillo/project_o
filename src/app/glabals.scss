@@ -51,6 +51,14 @@ p {
   }
 }
 
+.cat_link {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: left;
+  color: #d1d1d1;
+}
+
 .dark {
   h2 {
     color: #ffff;
@@ -66,4 +74,12 @@ p {
   small {
     color: #b6b6b6;
   }
+
+  .invert_img {
+    filter: invert(1);
+  }
+}
+
+input {
+  @apply focus:ring-0;
 }
