@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Header from "../profile_components/header";
+import Header from "../profile_components/header_small";
 import Services from "../profile_components/Services";
 import Styles from "./service.module.scss";
 import { Calendar } from "@/app/modules/ui/calendar";
