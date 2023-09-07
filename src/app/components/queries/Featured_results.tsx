@@ -26,45 +26,6 @@ const fetchFeaturedResults = async () => {
   });
 };
 
-const featuredItems = [
-  {
-    name: "Tio Puente",
-    role: "Barber",
-    featuredImage: "https://picsum.photos/200/300",
-    url: "/profile",
-  },
-  {
-    name: "John Doe",
-    role: "Lawyer",
-    featuredImage: "https://picsum.photos/200/350",
-    url: "/profile",
-  },
-  {
-    name: "Al Pastor",
-    role: "Doctor",
-    featuredImage: "https://picsum.photos/200/400",
-    url: "/profile",
-  },
-  {
-    name: "Tio Puente",
-    role: "Barber",
-    featuredImage: "https://picsum.photos/200/300",
-    url: "/profile",
-  },
-  {
-    name: "John Doe",
-    role: "Lawyer",
-    featuredImage: "https://picsum.photos/200/350",
-    url: "/profile",
-  },
-  {
-    name: "Al Pastor",
-    role: "Doctor",
-    featuredImage: "https://picsum.photos/200/400",
-    url: "/profile",
-  },
-];
-
 export default async function FeaturedResults() {
   const featuredResults = await fetchFeaturedResults();
 
@@ -84,7 +45,10 @@ export default async function FeaturedResults() {
             <div className="item mt-4" key={index}>
               <div className="img_container w-full h-64  lg:h-72 overflow-hidden rounded-2xl">
                 <Image
-                  src={item.services[0]?.featuredImage}
+                  src={
+                    item.services[0]?.featuredImage ||
+                    "https://picsum.photos/500/500"
+                  }
                   width={500}
                   height={500}
                   alt="img"
