@@ -3,7 +3,7 @@
 //  include https://picsum.photos
 const nextConfig = {
   images: {
-    domains: ["picsum.photos"],
+    domains: ["picsum.photos", "robohash.org", "dummyimage.com"],
   },
 };
 

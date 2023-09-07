@@ -5,7 +5,7 @@ import { SearchIcon } from "lucide-react";
 
 export default function Home_header() {
   return (
-    <section className=" max-w-sm md:max-w-4xl m-auto px-4 ">
+    <section className=" my_container ">
       {/* logo  */}
       <div className="flex justify-between items-center">
         <div className="logo m-auto">

@@ -24,6 +24,7 @@ const config: Config = {
         secoundar_dark_text: "#707070;",
         light_text: "#ffffff",
         secoundar_light_text: "#f2f2f2",
+        theme_color: "#ff5a5f",
       },
     },
   },

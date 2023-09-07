@@ -42,16 +42,18 @@ const CategoriesArray = [
 
 export default function Categories() {
   return (
-    <section className="max-w-sm md:max-w-4xl m-auto  mt-7 ">
-      {CategoriesArray.map((item, index) => (
-        <Link
-          key={index}
-          href={item.url}
-          className="py-2 px-3 border border-zinc-600 bg-cyan-900 bg-opacity-20 rounded-xl m-2 inline-block cat_link hover:bg-opacity-40"
-        >
-          {item.name}
-        </Link>
-      ))}
-    </section>
+    <div className=" my_container">
+      <section className="  m-auto  mt-7 flex md:flex-none overflow-x-scroll md:overflow-auto pb-10 hide-scroll-bar">
+        {CategoriesArray.map((item, index) => (
+          <Link
+            key={index}
+            href={item.url}
+            className="py-2 px-3  text-zinc-100 bg-theme_color  rounded-xl m-2 inline-block cat_link hover:bg-opacity-40  flex-shrink-0  "
+          >
+            {item.name}
+          </Link>
+        ))}
+      </section>
+    </div>
   );
 }

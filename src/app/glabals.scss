@@ -56,7 +56,14 @@ p {
   font-weight: 500;
   font-size: 13px;
   text-align: left;
-  color: #d1d1d1;
+  // color: #d1d1d1;
+}
+
+.my_container {
+  width: 992px;
+  max-width: 90vw;
+  margin: auto;
+  // margin-top: 30px;
 }
 
 .dark {
