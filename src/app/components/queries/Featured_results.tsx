@@ -30,7 +30,7 @@ export default async function FeaturedResults() {
   const featuredResults = await fetchFeaturedResults();
 
   // only select users that have services
-  const filteredResults = featuredResults.filter((item) => {
+  const filteredResults = featuredResults.filter((item: any) => {
     return item.services.length > 0;
   });
 
