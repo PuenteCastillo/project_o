@@ -40,7 +40,7 @@ export default async function FeaturedResults() {
     <section className="my_container ">
       <TitleRow title="Featured Results" />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-5 mt-5">
-        {filteredResults.map((item, index) => (
+        {filteredResults.map((item: any, index) => (
           <Link href={item.url} key={index}>
             <div className="item mt-4" key={index}>
               <div className="img_container w-full h-64  lg:h-72 overflow-hidden rounded-2xl">
