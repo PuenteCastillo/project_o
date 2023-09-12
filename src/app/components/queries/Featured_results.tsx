@@ -14,8 +14,12 @@ const fetchFeaturedResults = async () => {
     select: {
       first_name: true,
       last_name: true,
-      occupation: true,
-      url: true,
+      slug: true,
+      profile: {
+        select: {
+          occupation: true,
+        },
+      },
       services: {
         select: {
           title: true,
@@ -33,15 +37,14 @@ export default async function FeaturedResults() {
   const filteredResults = featuredResults.filter((item: any) => {
     return item.services.length > 0;
   });
-
-  console.log(filteredResults);
+  // const filteredResults = filteredResults;
 
   return (
     <section className="my_container ">
       <TitleRow title="Featured Results" />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-5 mt-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-5 mt-5">
         {filteredResults.map((item: any, index: any) => (
-          <Link href={item.url} key={index}>
+          <Link href={"/profile/" + item.slug} key={index}>
             <div className="item mt-4" key={index}>
               <div className="img_container w-full h-64  lg:h-72 overflow-hidden rounded-2xl">
                 <Image
@@ -59,7 +62,9 @@ export default async function FeaturedResults() {
                 <h4 className="text-xl font-bold">
                   {item.first_name + " " + item.last_name}
                 </h4>
-                <p className="text-sm text-gray-500">{item.occupation}</p>
+                <p className="text-sm text-gray-500">
+                  {item.profile?.occupation || "No Occupation"}
+                </p>
               </div>
             </div>
           </Link>

@@ -111,6 +111,7 @@ exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  slug: 'slug',
   title: 'title',
   content: 'content',
   published: 'published',
@@ -119,11 +120,13 @@ exports.Prisma.PostScalarFieldEnum = {
 
 exports.Prisma.ServiceScalarFieldEnum = {
   id: 'id',
+  slug: 'slug',
   title: 'title',
   duration: 'duration',
   description: 'description',
   price: 'price',
   featuredImage: 'featuredImage',
+  featured: 'featured',
   gallery: 'gallery',
   userId: 'userId',
   createdAt: 'createdAt',
@@ -133,12 +136,13 @@ exports.Prisma.ServiceScalarFieldEnum = {
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  url: 'url',
+  slug: 'slug',
   first_name: 'first_name',
   last_name: 'last_name',
   avatar: 'avatar',
   occupation: 'occupation',
   bio: 'bio',
+  featured: 'featured',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

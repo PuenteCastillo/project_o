@@ -1,9 +1,21 @@
 "use client";
+
 import Image from "next/image";
 import Styles from "./header.module.scss";
 import Link from "next/link";
+import { oc } from "date-fns/locale";
 
-export default function Header_Small() {
+export default function Header_Small({
+  name,
+  avatar,
+  occupation,
+  slug,
+}: {
+  name: string;
+  avatar: string;
+  occupation: string;
+  slug: string;
+}) {
   return (
     <section className={Styles.profile_header_small}>
       <div className="grid grid-cols-1 md:grid-cols-2">
@@ -11,7 +23,7 @@ export default function Header_Small() {
           <div className="flex ">
             <div className="image_conatiner h-20 w-20 rounded-full p-1 overflow-hidden bg-white ">
               <Image
-                src="https://picsum.photos/400/410"
+                src={avatar}
                 width={136}
                 height={136}
                 alt={"profile_pic"}
@@ -21,8 +33,8 @@ export default function Header_Small() {
 
             {/* Name  */}
             <div className="ml-5 pt-4">
-              <h1>Richard Foley</h1>
-              <p> Doctor </p>
+              <h1>{name}</h1>
+              <p>{occupation} </p>
             </div>
           </div>
         </Link>
@@ -30,7 +42,7 @@ export default function Header_Small() {
           {/* links */}
           {/* button back to profile  */}
           <div className=" flex justify-end pt-4">
-            <Link href="/profile" className="theme_btn">
+            <Link href={`/profile/${slug}`} className="theme_btn">
               <div className={Styles.back_to_profile}>
                 <span>View Profile</span>
               </div>

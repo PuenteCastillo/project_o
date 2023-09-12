@@ -5,7 +5,7 @@ import Services from "./profile_components/Services";
 export default function profile() {
   return (
     <main id="profile_page" className="">
-      <Header />
+      {/* <Header /> */}
       <Services />
     </main>
   );

@@ -5,15 +5,10 @@ import Image from "next/image";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
-const servicesData = [
-  { src: "https://picsum.photos/250/300", title: "Men's Haircut" },
-  { src: "https://picsum.photos/550/500", title: "Woman's haircut" },
-  { src: "https://picsum.photos/350/300", title: "Hair Coloring" },
-  { src: "https://picsum.photos/450/300", title: "Hair Styling" },
-  { src: "https://picsum.photos/350/300", title: "Hair Coloring" },
-];
+export default function Services({ profile }: { profile: any }) {
+  const filteredServices = profile.services;
+  console.log(filteredServices);
 
-export default function Services() {
   return (
     <section id={Styles.Services}>
       <div className={Styles.container}>
@@ -30,12 +25,15 @@ export default function Services() {
             <h3 className="text-center mt-3"> Add New</h3>
           </div>
 
-          {servicesData.map((service, index) => (
-            <Link href="/profile/service" key={index}>
+          {filteredServices?.map((service: any, index: any) => (
+            <Link
+              href={`/profile/${profile?.slug}/${service?.slug}`}
+              key={index}
+            >
               <div className={Styles.content_container}>
                 <div className={Styles.img_container}>
                   <Image
-                    src={service.src}
+                    src={service.featuredImage}
                     width={160}
                     height={270}
                     alt="service"

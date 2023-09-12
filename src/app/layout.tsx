@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import Providers from "./providers";
 import ThemeButton from "./components/ThemeButton";
 import Navbar from "./components/navbars/General_nav";
+import AuthContext from "./context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,13 +28,15 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className={inter.className}>
-        <Providers>
-          <Navbar />
-          <main className=" bg-white  dark:bg-midnight min-h-screen">
-            {children}
-            <ThemeButton />
-          </main>
-        </Providers>
+        <AuthContext>
+          <Providers>
+            <Navbar />
+            <main className=" bg-white  dark:bg-midnight min-h-screen">
+              {children}
+              <ThemeButton />
+            </main>
+          </Providers>
+        </AuthContext>
       </body>
     </html>
   );

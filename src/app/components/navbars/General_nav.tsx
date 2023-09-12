@@ -1,6 +1,7 @@
 "use client";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+import Logo from "../../../images/logo.png";
 import {
   Bars3Icon,
   BellIcon,
@@ -45,8 +46,10 @@ export default function Example() {
                   <Link href="/">
                     <Image
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                      src={Logo}
                       alt="Your Company"
+                      width={150}
+                      height={50}
                     />
                   </Link>
                 </div>

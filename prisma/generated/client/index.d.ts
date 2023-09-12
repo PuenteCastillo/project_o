@@ -1093,6 +1093,7 @@ export namespace Prisma {
     id: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    slug: string | null
     title: string | null
     content: string | null
     published: boolean | null
@@ -1103,6 +1104,7 @@ export namespace Prisma {
     id: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    slug: string | null
     title: string | null
     content: string | null
     published: boolean | null
@@ -1113,6 +1115,7 @@ export namespace Prisma {
     id: number
     createdAt: number
     updatedAt: number
+    slug: number
     title: number
     content: number
     published: number
@@ -1135,6 +1138,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updatedAt?: true
+    slug?: true
     title?: true
     content?: true
     published?: true
@@ -1145,6 +1149,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updatedAt?: true
+    slug?: true
     title?: true
     content?: true
     published?: true
@@ -1155,6 +1160,7 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updatedAt?: true
+    slug?: true
     title?: true
     content?: true
     published?: true
@@ -1252,6 +1258,7 @@ export namespace Prisma {
     id: number
     createdAt: Date
     updatedAt: Date
+    slug: string
     title: string
     content: string | null
     published: boolean
@@ -1281,6 +1288,7 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    slug?: boolean
     title?: boolean
     content?: boolean
     published?: boolean
@@ -1292,6 +1300,7 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    slug?: boolean
     title?: boolean
     content?: boolean
     published?: boolean
@@ -1312,6 +1321,7 @@ export namespace Prisma {
       id: number
       createdAt: Date
       updatedAt: Date
+      slug: string
       title: string
       content: string | null
       published: boolean
@@ -1714,6 +1724,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Post", 'Int'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
     readonly updatedAt: FieldRef<"Post", 'DateTime'>
+    readonly slug: FieldRef<"Post", 'String'>
     readonly title: FieldRef<"Post", 'String'>
     readonly content: FieldRef<"Post", 'String'>
     readonly published: FieldRef<"Post", 'Boolean'>
@@ -2069,11 +2080,13 @@ export namespace Prisma {
 
   export type ServiceMinAggregateOutputType = {
     id: number | null
+    slug: string | null
     title: string | null
     duration: string | null
     description: string | null
     price: string | null
     featuredImage: string | null
+    featured: boolean | null
     userId: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2081,11 +2094,13 @@ export namespace Prisma {
 
   export type ServiceMaxAggregateOutputType = {
     id: number | null
+    slug: string | null
     title: string | null
     duration: string | null
     description: string | null
     price: string | null
     featuredImage: string | null
+    featured: boolean | null
     userId: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2093,11 +2108,13 @@ export namespace Prisma {
 
   export type ServiceCountAggregateOutputType = {
     id: number
+    slug: number
     title: number
     duration: number
     description: number
     price: number
     featuredImage: number
+    featured: number
     gallery: number
     userId: number
     createdAt: number
@@ -2118,11 +2135,13 @@ export namespace Prisma {
 
   export type ServiceMinAggregateInputType = {
     id?: true
+    slug?: true
     title?: true
     duration?: true
     description?: true
     price?: true
     featuredImage?: true
+    featured?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -2130,11 +2149,13 @@ export namespace Prisma {
 
   export type ServiceMaxAggregateInputType = {
     id?: true
+    slug?: true
     title?: true
     duration?: true
     description?: true
     price?: true
     featuredImage?: true
+    featured?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -2142,11 +2163,13 @@ export namespace Prisma {
 
   export type ServiceCountAggregateInputType = {
     id?: true
+    slug?: true
     title?: true
     duration?: true
     description?: true
     price?: true
     featuredImage?: true
+    featured?: true
     gallery?: true
     userId?: true
     createdAt?: true
@@ -2242,11 +2265,13 @@ export namespace Prisma {
 
   export type ServiceGroupByOutputType = {
     id: number
+    slug: string
     title: string
     duration: string
     description: string | null
     price: string | null
     featuredImage: string | null
+    featured: boolean
     gallery: string[]
     userId: number
     createdAt: Date
@@ -2274,11 +2299,13 @@ export namespace Prisma {
 
   export type ServiceSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     title?: boolean
     duration?: boolean
     description?: boolean
     price?: boolean
     featuredImage?: boolean
+    featured?: boolean
     gallery?: boolean
     userId?: boolean
     createdAt?: boolean
@@ -2288,11 +2315,13 @@ export namespace Prisma {
 
   export type ServiceSelectScalar = {
     id?: boolean
+    slug?: boolean
     title?: boolean
     duration?: boolean
     description?: boolean
     price?: boolean
     featuredImage?: boolean
+    featured?: boolean
     gallery?: boolean
     userId?: boolean
     createdAt?: boolean
@@ -2311,11 +2340,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetResult<{
       id: number
+      slug: string
       title: string
       duration: string
       description: string | null
       price: string | null
       featuredImage: string | null
+      featured: boolean
       gallery: string[]
       userId: number
       createdAt: Date
@@ -2716,11 +2747,13 @@ export namespace Prisma {
    */ 
   interface ServiceFieldRefs {
     readonly id: FieldRef<"Service", 'Int'>
+    readonly slug: FieldRef<"Service", 'String'>
     readonly title: FieldRef<"Service", 'String'>
     readonly duration: FieldRef<"Service", 'String'>
     readonly description: FieldRef<"Service", 'String'>
     readonly price: FieldRef<"Service", 'String'>
     readonly featuredImage: FieldRef<"Service", 'String'>
+    readonly featured: FieldRef<"Service", 'Boolean'>
     readonly gallery: FieldRef<"Service", 'String[]'>
     readonly userId: FieldRef<"Service", 'Int'>
     readonly createdAt: FieldRef<"Service", 'DateTime'>
@@ -3075,12 +3108,13 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: number | null
     email: string | null
-    url: string | null
+    slug: string | null
     first_name: string | null
     last_name: string | null
     avatar: string | null
     occupation: string | null
     bio: string | null
+    featured: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3088,12 +3122,13 @@ export namespace Prisma {
   export type UserMaxAggregateOutputType = {
     id: number | null
     email: string | null
-    url: string | null
+    slug: string | null
     first_name: string | null
     last_name: string | null
     avatar: string | null
     occupation: string | null
     bio: string | null
+    featured: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3101,12 +3136,13 @@ export namespace Prisma {
   export type UserCountAggregateOutputType = {
     id: number
     email: number
-    url: number
+    slug: number
     first_name: number
     last_name: number
     avatar: number
     occupation: number
     bio: number
+    featured: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3124,12 +3160,13 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     email?: true
-    url?: true
+    slug?: true
     first_name?: true
     last_name?: true
     avatar?: true
     occupation?: true
     bio?: true
+    featured?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3137,12 +3174,13 @@ export namespace Prisma {
   export type UserMaxAggregateInputType = {
     id?: true
     email?: true
-    url?: true
+    slug?: true
     first_name?: true
     last_name?: true
     avatar?: true
     occupation?: true
     bio?: true
+    featured?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3150,12 +3188,13 @@ export namespace Prisma {
   export type UserCountAggregateInputType = {
     id?: true
     email?: true
-    url?: true
+    slug?: true
     first_name?: true
     last_name?: true
     avatar?: true
     occupation?: true
     bio?: true
+    featured?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3250,12 +3289,13 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: number
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio: string | null
+    bio: string
+    featured: boolean
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -3282,12 +3322,13 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
-    url?: boolean
+    slug?: boolean
     first_name?: boolean
     last_name?: boolean
     avatar?: boolean
     occupation?: boolean
     bio?: boolean
+    featured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     posts?: boolean | User$postsArgs<ExtArgs>
@@ -3298,12 +3339,13 @@ export namespace Prisma {
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
-    url?: boolean
+    slug?: boolean
     first_name?: boolean
     last_name?: boolean
     avatar?: boolean
     occupation?: boolean
     bio?: boolean
+    featured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -3324,12 +3366,13 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       id: number
       email: string
-      url: string
+      slug: string
       first_name: string
       last_name: string
       avatar: string
       occupation: string
-      bio: string | null
+      bio: string
+      featured: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -3731,12 +3774,13 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
     readonly email: FieldRef<"User", 'String'>
-    readonly url: FieldRef<"User", 'String'>
+    readonly slug: FieldRef<"User", 'String'>
     readonly first_name: FieldRef<"User", 'String'>
     readonly last_name: FieldRef<"User", 'String'>
     readonly avatar: FieldRef<"User", 'String'>
     readonly occupation: FieldRef<"User", 'String'>
     readonly bio: FieldRef<"User", 'String'>
+    readonly featured: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -4126,6 +4170,7 @@ export namespace Prisma {
     id: 'id',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    slug: 'slug',
     title: 'title',
     content: 'content',
     published: 'published',
@@ -4137,11 +4182,13 @@ export namespace Prisma {
 
   export const ServiceScalarFieldEnum: {
     id: 'id',
+    slug: 'slug',
     title: 'title',
     duration: 'duration',
     description: 'description',
     price: 'price',
     featuredImage: 'featuredImage',
+    featured: 'featured',
     gallery: 'gallery',
     userId: 'userId',
     createdAt: 'createdAt',
@@ -4154,12 +4201,13 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     email: 'email',
-    url: 'url',
+    slug: 'slug',
     first_name: 'first_name',
     last_name: 'last_name',
     avatar: 'avatar',
     occupation: 'occupation',
     bio: 'bio',
+    featured: 'featured',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4269,6 +4317,7 @@ export namespace Prisma {
     id?: IntFilter<"Post"> | number
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
+    slug?: StringFilter<"Post"> | string
     title?: StringFilter<"Post"> | string
     content?: StringNullableFilter<"Post"> | string | null
     published?: BoolFilter<"Post"> | boolean
@@ -4280,6 +4329,7 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     content?: SortOrderInput | SortOrder
     published?: SortOrder
@@ -4289,6 +4339,7 @@ export namespace Prisma {
 
   export type PostWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    slug?: string
     AND?: PostWhereInput | PostWhereInput[]
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
@@ -4299,12 +4350,13 @@ export namespace Prisma {
     published?: BoolFilter<"Post"> | boolean
     authorId?: IntFilter<"Post"> | number
     author?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "slug">
 
   export type PostOrderByWithAggregationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     content?: SortOrderInput | SortOrder
     published?: SortOrder
@@ -4323,6 +4375,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Post"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
+    slug?: StringWithAggregatesFilter<"Post"> | string
     title?: StringWithAggregatesFilter<"Post"> | string
     content?: StringNullableWithAggregatesFilter<"Post"> | string | null
     published?: BoolWithAggregatesFilter<"Post"> | boolean
@@ -4334,11 +4387,13 @@ export namespace Prisma {
     OR?: ServiceWhereInput[]
     NOT?: ServiceWhereInput | ServiceWhereInput[]
     id?: IntFilter<"Service"> | number
+    slug?: StringFilter<"Service"> | string
     title?: StringFilter<"Service"> | string
     duration?: StringFilter<"Service"> | string
     description?: StringNullableFilter<"Service"> | string | null
     price?: StringNullableFilter<"Service"> | string | null
     featuredImage?: StringNullableFilter<"Service"> | string | null
+    featured?: BoolFilter<"Service"> | boolean
     gallery?: StringNullableListFilter<"Service">
     userId?: IntFilter<"Service"> | number
     createdAt?: DateTimeFilter<"Service"> | Date | string
@@ -4348,11 +4403,13 @@ export namespace Prisma {
 
   export type ServiceOrderByWithRelationInput = {
     id?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     duration?: SortOrder
     description?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
     featuredImage?: SortOrderInput | SortOrder
+    featured?: SortOrder
     gallery?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -4362,6 +4419,7 @@ export namespace Prisma {
 
   export type ServiceWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    slug?: string
     AND?: ServiceWhereInput | ServiceWhereInput[]
     OR?: ServiceWhereInput[]
     NOT?: ServiceWhereInput | ServiceWhereInput[]
@@ -4370,20 +4428,23 @@ export namespace Prisma {
     description?: StringNullableFilter<"Service"> | string | null
     price?: StringNullableFilter<"Service"> | string | null
     featuredImage?: StringNullableFilter<"Service"> | string | null
+    featured?: BoolFilter<"Service"> | boolean
     gallery?: StringNullableListFilter<"Service">
     userId?: IntFilter<"Service"> | number
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "slug">
 
   export type ServiceOrderByWithAggregationInput = {
     id?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     duration?: SortOrder
     description?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
     featuredImage?: SortOrderInput | SortOrder
+    featured?: SortOrder
     gallery?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -4400,11 +4461,13 @@ export namespace Prisma {
     OR?: ServiceScalarWhereWithAggregatesInput[]
     NOT?: ServiceScalarWhereWithAggregatesInput | ServiceScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Service"> | number
+    slug?: StringWithAggregatesFilter<"Service"> | string
     title?: StringWithAggregatesFilter<"Service"> | string
     duration?: StringWithAggregatesFilter<"Service"> | string
     description?: StringNullableWithAggregatesFilter<"Service"> | string | null
     price?: StringNullableWithAggregatesFilter<"Service"> | string | null
     featuredImage?: StringNullableWithAggregatesFilter<"Service"> | string | null
+    featured?: BoolWithAggregatesFilter<"Service"> | boolean
     gallery?: StringNullableListFilter<"Service">
     userId?: IntWithAggregatesFilter<"Service"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
@@ -4417,12 +4480,13 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
     email?: StringFilter<"User"> | string
-    url?: StringFilter<"User"> | string
+    slug?: StringFilter<"User"> | string
     first_name?: StringFilter<"User"> | string
     last_name?: StringFilter<"User"> | string
     avatar?: StringFilter<"User"> | string
     occupation?: StringFilter<"User"> | string
-    bio?: StringNullableFilter<"User"> | string | null
+    bio?: StringFilter<"User"> | string
+    featured?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     posts?: PostListRelationFilter
@@ -4432,12 +4496,13 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
-    url?: SortOrder
+    slug?: SortOrder
     first_name?: SortOrder
     last_name?: SortOrder
     avatar?: SortOrder
     occupation?: SortOrder
-    bio?: SortOrderInput | SortOrder
+    bio?: SortOrder
+    featured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     posts?: PostOrderByRelationAggregateInput
@@ -4447,7 +4512,7 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
-    url?: string
+    slug?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -4455,22 +4520,24 @@ export namespace Prisma {
     last_name?: StringFilter<"User"> | string
     avatar?: StringFilter<"User"> | string
     occupation?: StringFilter<"User"> | string
-    bio?: StringNullableFilter<"User"> | string | null
+    bio?: StringFilter<"User"> | string
+    featured?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     posts?: PostListRelationFilter
     services?: ServiceListRelationFilter
-  }, "id" | "email" | "url">
+  }, "id" | "email" | "slug">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
-    url?: SortOrder
+    slug?: SortOrder
     first_name?: SortOrder
     last_name?: SortOrder
     avatar?: SortOrder
     occupation?: SortOrder
-    bio?: SortOrderInput | SortOrder
+    bio?: SortOrder
+    featured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -4486,12 +4553,13 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
     email?: StringWithAggregatesFilter<"User"> | string
-    url?: StringWithAggregatesFilter<"User"> | string
+    slug?: StringWithAggregatesFilter<"User"> | string
     first_name?: StringWithAggregatesFilter<"User"> | string
     last_name?: StringWithAggregatesFilter<"User"> | string
     avatar?: StringWithAggregatesFilter<"User"> | string
     occupation?: StringWithAggregatesFilter<"User"> | string
-    bio?: StringNullableWithAggregatesFilter<"User"> | string | null
+    bio?: StringWithAggregatesFilter<"User"> | string
+    featured?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -4499,6 +4567,7 @@ export namespace Prisma {
   export type PostCreateInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
+    slug: string
     title: string
     content?: string | null
     published?: boolean
@@ -4509,6 +4578,7 @@ export namespace Prisma {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    slug: string
     title: string
     content?: string | null
     published?: boolean
@@ -4518,6 +4588,7 @@ export namespace Prisma {
   export type PostUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -4528,6 +4599,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -4538,6 +4610,7 @@ export namespace Prisma {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    slug: string
     title: string
     content?: string | null
     published?: boolean
@@ -4547,6 +4620,7 @@ export namespace Prisma {
   export type PostUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -4556,6 +4630,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -4563,11 +4638,13 @@ export namespace Prisma {
   }
 
   export type ServiceCreateInput = {
+    slug: string
     title: string
     duration: string
     description?: string | null
     price?: string | null
     featuredImage?: string | null
+    featured?: boolean
     gallery?: ServiceCreategalleryInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4576,11 +4653,13 @@ export namespace Prisma {
 
   export type ServiceUncheckedCreateInput = {
     id?: number
+    slug: string
     title: string
     duration: string
     description?: string | null
     price?: string | null
     featuredImage?: string | null
+    featured?: boolean
     gallery?: ServiceCreategalleryInput | string[]
     userId: number
     createdAt?: Date | string
@@ -4588,11 +4667,13 @@ export namespace Prisma {
   }
 
   export type ServiceUpdateInput = {
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableStringFieldUpdateOperationsInput | string | null
     featuredImage?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
     gallery?: ServiceUpdategalleryInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4601,11 +4682,13 @@ export namespace Prisma {
 
   export type ServiceUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableStringFieldUpdateOperationsInput | string | null
     featuredImage?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
     gallery?: ServiceUpdategalleryInput | string[]
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4614,11 +4697,13 @@ export namespace Prisma {
 
   export type ServiceCreateManyInput = {
     id?: number
+    slug: string
     title: string
     duration: string
     description?: string | null
     price?: string | null
     featuredImage?: string | null
+    featured?: boolean
     gallery?: ServiceCreategalleryInput | string[]
     userId: number
     createdAt?: Date | string
@@ -4626,11 +4711,13 @@ export namespace Prisma {
   }
 
   export type ServiceUpdateManyMutationInput = {
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableStringFieldUpdateOperationsInput | string | null
     featuredImage?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
     gallery?: ServiceUpdategalleryInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4638,11 +4725,13 @@ export namespace Prisma {
 
   export type ServiceUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableStringFieldUpdateOperationsInput | string | null
     featuredImage?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
     gallery?: ServiceUpdategalleryInput | string[]
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4651,12 +4740,13 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio?: string | null
+    bio: string
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     posts?: PostCreateNestedManyWithoutAuthorInput
@@ -4666,12 +4756,13 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: number
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio?: string | null
+    bio: string
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -4680,12 +4771,13 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUpdateManyWithoutAuthorNestedInput
@@ -4695,12 +4787,13 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -4710,24 +4803,26 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: number
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio?: string | null
+    bio: string
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4735,12 +4830,13 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4816,6 +4912,7 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     content?: SortOrder
     published?: SortOrder
@@ -4831,6 +4928,7 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     content?: SortOrder
     published?: SortOrder
@@ -4841,6 +4939,7 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     content?: SortOrder
     published?: SortOrder
@@ -4936,11 +5035,13 @@ export namespace Prisma {
 
   export type ServiceCountOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     duration?: SortOrder
     description?: SortOrder
     price?: SortOrder
     featuredImage?: SortOrder
+    featured?: SortOrder
     gallery?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -4954,11 +5055,13 @@ export namespace Prisma {
 
   export type ServiceMaxOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     duration?: SortOrder
     description?: SortOrder
     price?: SortOrder
     featuredImage?: SortOrder
+    featured?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4966,11 +5069,13 @@ export namespace Prisma {
 
   export type ServiceMinOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     title?: SortOrder
     duration?: SortOrder
     description?: SortOrder
     price?: SortOrder
     featuredImage?: SortOrder
+    featured?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5004,12 +5109,13 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    url?: SortOrder
+    slug?: SortOrder
     first_name?: SortOrder
     last_name?: SortOrder
     avatar?: SortOrder
     occupation?: SortOrder
     bio?: SortOrder
+    featured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5021,12 +5127,13 @@ export namespace Prisma {
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    url?: SortOrder
+    slug?: SortOrder
     first_name?: SortOrder
     last_name?: SortOrder
     avatar?: SortOrder
     occupation?: SortOrder
     bio?: SortOrder
+    featured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5034,12 +5141,13 @@ export namespace Prisma {
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    url?: SortOrder
+    slug?: SortOrder
     first_name?: SortOrder
     last_name?: SortOrder
     avatar?: SortOrder
     occupation?: SortOrder
     bio?: SortOrder
+    featured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5344,12 +5452,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutPostsInput = {
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio?: string | null
+    bio: string
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     services?: ServiceCreateNestedManyWithoutUserInput
@@ -5358,12 +5467,13 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutPostsInput = {
     id?: number
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio?: string | null
+    bio: string
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
@@ -5387,12 +5497,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutPostsInput = {
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     services?: ServiceUpdateManyWithoutUserNestedInput
@@ -5401,12 +5512,13 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutPostsInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
@@ -5414,12 +5526,13 @@ export namespace Prisma {
 
   export type UserCreateWithoutServicesInput = {
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio?: string | null
+    bio: string
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     posts?: PostCreateNestedManyWithoutAuthorInput
@@ -5428,12 +5541,13 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutServicesInput = {
     id?: number
     email: string
-    url: string
+    slug: string
     first_name: string
     last_name: string
     avatar: string
     occupation: string
-    bio?: string | null
+    bio: string
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -5457,12 +5571,13 @@ export namespace Prisma {
 
   export type UserUpdateWithoutServicesInput = {
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUpdateManyWithoutAuthorNestedInput
@@ -5471,12 +5586,13 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutServicesInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     occupation?: StringFieldUpdateOperationsInput | string
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -5485,6 +5601,7 @@ export namespace Prisma {
   export type PostCreateWithoutAuthorInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
+    slug: string
     title: string
     content?: string | null
     published?: boolean
@@ -5494,6 +5611,7 @@ export namespace Prisma {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    slug: string
     title: string
     content?: string | null
     published?: boolean
@@ -5510,11 +5628,13 @@ export namespace Prisma {
   }
 
   export type ServiceCreateWithoutUserInput = {
+    slug: string
     title: string
     duration: string
     description?: string | null
     price?: string | null
     featuredImage?: string | null
+    featured?: boolean
     gallery?: ServiceCreategalleryInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5522,11 +5642,13 @@ export namespace Prisma {
 
   export type ServiceUncheckedCreateWithoutUserInput = {
     id?: number
+    slug: string
     title: string
     duration: string
     description?: string | null
     price?: string | null
     featuredImage?: string | null
+    featured?: boolean
     gallery?: ServiceCreategalleryInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5565,6 +5687,7 @@ export namespace Prisma {
     id?: IntFilter<"Post"> | number
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
+    slug?: StringFilter<"Post"> | string
     title?: StringFilter<"Post"> | string
     content?: StringNullableFilter<"Post"> | string | null
     published?: BoolFilter<"Post"> | boolean
@@ -5592,11 +5715,13 @@ export namespace Prisma {
     OR?: ServiceScalarWhereInput[]
     NOT?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
     id?: IntFilter<"Service"> | number
+    slug?: StringFilter<"Service"> | string
     title?: StringFilter<"Service"> | string
     duration?: StringFilter<"Service"> | string
     description?: StringNullableFilter<"Service"> | string | null
     price?: StringNullableFilter<"Service"> | string | null
     featuredImage?: StringNullableFilter<"Service"> | string | null
+    featured?: BoolFilter<"Service"> | boolean
     gallery?: StringNullableListFilter<"Service">
     userId?: IntFilter<"Service"> | number
     createdAt?: DateTimeFilter<"Service"> | Date | string
@@ -5607,6 +5732,7 @@ export namespace Prisma {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    slug: string
     title: string
     content?: string | null
     published?: boolean
@@ -5614,11 +5740,13 @@ export namespace Prisma {
 
   export type ServiceCreateManyUserInput = {
     id?: number
+    slug: string
     title: string
     duration: string
     description?: string | null
     price?: string | null
     featuredImage?: string | null
+    featured?: boolean
     gallery?: ServiceCreategalleryInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5627,6 +5755,7 @@ export namespace Prisma {
   export type PostUpdateWithoutAuthorInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -5636,6 +5765,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -5645,17 +5775,20 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ServiceUpdateWithoutUserInput = {
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableStringFieldUpdateOperationsInput | string | null
     featuredImage?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
     gallery?: ServiceUpdategalleryInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5663,11 +5796,13 @@ export namespace Prisma {
 
   export type ServiceUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableStringFieldUpdateOperationsInput | string | null
     featuredImage?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
     gallery?: ServiceUpdategalleryInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5675,11 +5810,13 @@ export namespace Prisma {
 
   export type ServiceUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     duration?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableStringFieldUpdateOperationsInput | string | null
     featuredImage?: NullableStringFieldUpdateOperationsInput | string | null
+    featured?: BoolFieldUpdateOperationsInput | boolean
     gallery?: ServiceUpdategalleryInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -25,6 +25,7 @@ const config: Config = {
         light_text: "#ffffff",
         secoundar_light_text: "#f2f2f2",
         theme_color: "#ff5a5f",
+        destructive: "#ff5a5f",
       },
     },
   },
