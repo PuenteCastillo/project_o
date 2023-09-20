@@ -1,13 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
 import GoogleLogo from "../../../images/google_logo.png";
 import Link from "next/link";
 import { Alert, AlertTitle, AlertDescription } from "../../modules/ui/alert";
-import { AlertCircle, FileWarning, Terminal } from "lucide-react";
+import { AlertCircle, FileWarning, Terminal, Loader } from "lucide-react";
+
+import userAuth from "../../../../hooks/useAuth";
+import { AuthenticationContext } from "../../context/AuthContext";
 
 type FormData = {
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
   passwordConfirm: string;
@@ -15,7 +20,13 @@ type FormData = {
 };
 
 export default function Registration_form() {
+  const { error, setAuthState, loading, data } = useContext(
+    AuthenticationContext
+  );
+
   const [formData, setFormData] = useState<FormData>({
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
     passwordConfirm: "",
@@ -23,8 +34,11 @@ export default function Registration_form() {
   });
   //   allert toggle
   const [showAlert, setShowAlert] = useState(false);
+  const [LoadingState, setLoadingState] = useState(false);
   // error message
   const [errorMessage, setErrorMessage] = useState("");
+
+  const { signUp } = userAuth();
 
   const handleInputChange = (e: any) => {
     const { name, value, type, checked } = e.target;
@@ -38,11 +52,35 @@ export default function Registration_form() {
 
   const displayError = (message: string) => {
     setErrorMessage(message);
+    // turn off loading state
+    setLoadingState(false);
     setShowAlert(true);
+  };
+
+  const handleResponse = ({
+    success,
+    data,
+  }: {
+    success: boolean;
+    data: any;
+  }) => {
+    console.log(data);
+
+    if (success) {
+      // setAuthState(response);
+      // todo redirect to profile builder
+    } else {
+      displayError(data.response.data.errorMessages);
+    }
+    // turn off loading state
+    setLoadingState(false);
   };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
+    // turn on loading state
+    setLoadingState(true);
 
     // check if any input is empty
     if (!formData.email || !formData.password) {
@@ -67,8 +105,22 @@ export default function Registration_form() {
       return;
     }
 
+    // hcck if password and confirm password match
+    if (formData.password !== formData.passwordConfirm) {
+      displayError("Password and confirm password do not match");
+      return;
+    }
+
     console.log(formData);
     //todo Add form submission logic here
+    setShowAlert(false);
+    signUp(
+      formData.first_name,
+      formData.last_name,
+      formData.email,
+      formData.password,
+      handleResponse
+    );
   };
 
   return (
@@ -97,6 +149,46 @@ export default function Registration_form() {
             </div>
           </div>
         </div>
+        {/* First Name and Last Name  */}
+        <div className="flex space-x-4">
+          <div className="w-1/2">
+            <label
+              htmlFor="first_name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              First Name
+            </label>
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              placeholder="John"
+              value={formData.first_name}
+              onChange={handleInputChange}
+              required
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <div className="w-1/2">
+            <label
+              htmlFor="last_name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="last_name"
+              id="last_name"
+              placeholder="Doe"
+              value={formData.last_name}
+              onChange={handleInputChange}
+              required
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Your email
@@ -178,13 +270,23 @@ export default function Registration_form() {
           </a>
         </div>
 
-        <button
-          type="submit"
-          className=" theme_btn w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-          onClick={handleSubmit}
-        >
-          Sign Up
-        </button>
+        {LoadingState ? (
+          <button
+            type="submit"
+            className=" theme_btn w-full text-white bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            disabled
+          >
+            <Loader className="h-4 w-4 animate-spin m-auto" />
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className=" theme_btn w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            onClick={handleSubmit}
+          >
+            Sign Up
+          </button>
+        )}
 
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           Already have an account?{" "}

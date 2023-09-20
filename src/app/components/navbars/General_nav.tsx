@@ -1,5 +1,5 @@
 "use client";
-import { Fragment } from "react";
+
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Logo from "../../../images/logo.png";
 import {
@@ -7,9 +7,13 @@ import {
   BellIcon,
   XMarkIcon,
   UserCircleIcon,
+  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthenticationContext } from "@/app/context/AuthContext";
+import useAuth from "../../../../hooks/useAuth";
 
 const navigation = [
   { name: "Local Bulletin", href: "/", current: true },
@@ -22,7 +26,12 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function GeneralNav() {
+  const { data, loading } = useContext(AuthenticationContext);
+  const { signOut } = useAuth();
+
+  console.log(data);
+
   return (
     <Disclosure as="nav" className="bg-white ">
       {({ open }) => (
@@ -73,16 +82,42 @@ export default function Example() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button type="button" className="relative  ro text-gray-400 ">
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  <UserCircleIcon
-                    className="h-6 w-6 text-black"
-                    aria-hidden="true"
-                  />
-                </button>
-              </div>
+              {loading ? null : (
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  {data ? (
+                    <>
+                      <Link
+                        href={`profile/${data.slug}`}
+                        type="button"
+                        className="relative  ro text-gray-400 "
+                      >
+                        <UserCircleIcon
+                          className="h-6 w-6 text-black"
+                          aria-hidden="true"
+                        />
+                      </Link>
+
+                      <button
+                        className="relative  ro text-gray-400 "
+                        onClick={signOut}
+                      >
+                        <ArrowLeftOnRectangleIcon
+                          className="h-6 w-6 text-black"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </>
+                  ) : (
+                    <Link
+                      href="/login"
+                      type="button"
+                      className="relative  ro text-gray-400 "
+                    >
+                      Login
+                    </Link>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 

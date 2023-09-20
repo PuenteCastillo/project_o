@@ -3,6 +3,7 @@ import validator from "validator";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import * as jose from "jose";
+import { setCookie } from "cookies-next";
 
 const prisma = new PrismaClient();
 
@@ -14,7 +15,7 @@ export default async function handler(
     const { first_name, last_name, email, password } = req.body;
     const body = req.body;
     const errors: string[] = [];
-    const slug = `${first_name}_${last_name}`;
+    let slug = `${first_name}_${last_name}`;
 
     const validationSchema: any = [
       {
@@ -51,6 +52,7 @@ export default async function handler(
         email,
       },
     });
+    console.log(existingEmail);
 
     if (existingEmail) {
       return res.status(400).json({ errorMessages: "Email already exists" });
@@ -66,22 +68,26 @@ export default async function handler(
     // if slug already exists, add a random number to the end of it
     if (existingSlug) {
       const randomNumber = Math.floor(Math.random() * 1000);
-      body.slug = `${slug}_${randomNumber}`;
+      slug = `${slug}_${randomNumber}`;
     }
 
     // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    let data = {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: hashedPassword,
+      slug: slug,
+    };
+
+    console.log(data);
+
     // create user
     const user = await prisma.user
       .create({
-        data: {
-          first_name: first_name,
-          last_name: last_name,
-          email: email,
-          password: hashedPassword,
-          slug: body.slug,
-        },
+        data,
       })
       .catch((err) => {
         console.log(err);
@@ -100,7 +106,13 @@ export default async function handler(
       .setExpirationTime("1d")
       .sign(secret);
 
-    return res.status(200).json({ token });
+    setCookie("jwt", token, { req, res, maxAge: 60 * 30 * 24 });
+
+    return res.status(200).json({
+      firstName: user?.first_name,
+      lastName: user?.last_name,
+      email: user?.email,
+    });
   }
 
   return res.status(404).json("unknown endpoint");
